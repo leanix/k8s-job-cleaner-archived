@@ -10,7 +10,8 @@ require (
 	github.com/coreos/go-oidc v0.0.0-20160818215358-5644a2f50e2d
 	github.com/coreos/pkg v0.0.0-20160620232715-fa29b1d70f0b
 	github.com/davecgh/go-spew v0.0.0-20151105211317-5215b55f46b2
-	github.com/docker/distribution v2.4.0-rc.1.0.20160419170423-cd27f179f2c1+incompatible
+	github.com/docker/distribution v2.7.1+incompatible
+	github.com/dtan4/k8s-job-cleaner v0.0.0-20170602154949-609212d044cf
 	github.com/emicklei/go-restful v1.1.4-0.20160814184150-89ef8af493ab
 	github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680
 	github.com/go-openapi/jsonpointer v0.0.0-20160704185906-46af16f9f7b1
@@ -26,6 +27,7 @@ require (
 	github.com/jonboulle/clockwork v0.0.0-20141017032234-72f9bd7c4e0c
 	github.com/juju/ratelimit v0.0.0-20151125201925-77ed1c8a0121
 	github.com/mailru/easyjson v0.0.0-20160728113105-d5b7844b561a
+	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/pborman/uuid v0.0.0-20150603214016-ca53cad383ca
 	github.com/pkg/errors v0.8.0
 	github.com/spf13/pflag v0.0.0-20160915153101-c7e63cf4530b
