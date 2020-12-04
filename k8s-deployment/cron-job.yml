@@ -1,0 +1,58 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: k8s-job-cleaner
+  labels:
+    job: k8s-job-cleaner
+    role: job
+spec:
+  schedule: "0 * * * *"
+  startingDeadlineSeconds: 30
+  concurrencyPolicy: Allow
+  suspend: false
+  jobTemplate:
+    metadata:
+      name: k8s-job-cleaner
+      labels:
+        job: k8s-job-cleaner
+        role: job
+    spec:
+      template:
+        metadata:
+          name: k8s-job-cleaner
+          labels:
+            job: k8s-job-cleaner
+            role: job
+        spec:
+          containers:
+          - name: k8s-job-cleaner
+            image: docker.io/leanix/k8s-job-cleaner:latest
+            imagePullPolicy: Always
+            command:
+              - "/k8s-job-cleaner"
+              - "--in-cluster"
+              - "--label-group"
+              - "job"
+              - "--max-count"
+              - "1"
+            resources:
+              requests:
+                memory: "128Mi"
+                cpu: "0.1"
+              limits:
+                memory: "256Mi"
+                cpu: "1"
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsNonRoot: true
+              runAsUser: 65534
+              runAsGroup: 65534
+              allowPrivilegeEscalation: false
+            volumeMounts:
+              - name: rw-volume
+                mountPath: /tmp
+          volumes:
+            - name: rw-volume
+              emptyDir: {}
+          restartPolicy: Never
+          serviceAccountName: k8s-job-cleaner
